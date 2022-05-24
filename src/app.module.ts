@@ -9,28 +9,13 @@ import { HttpExceptionFilter } from './common/Exception-Filters/http-exception.f
 import { ModelExceptionFilter } from './common/Exception-Filters/model-exception.filter';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ScheduleModule } from '@nestjs/schedule';
-import { TestModule } from './test/test.module';
-// import { ClientsModule, Transport } from '@nestjs/microservices';
+// import { TestModule } from './test/test.module';
 
 @Module({
 	imports: [
 		ConfigModule.forRoot({
 			isGlobal: true,
 		}),
-		// ClientsModule.register([
-		// { 
-		// 	name: 'MAIN_SERVICE', 
-		// 	transport: Transport.RMQ,
-		// 	options: {
-		// 		urls: ['urlGoesHere'],
-		// 		queue: 'queueGoesHere',
-		// 		queueOptions: {
-		// 			durable: false
-		// 		}
-		// 	}
-		// },
-			
-		// ]),
 		RouterModule.forRoutes(routes),
 		ScheduleModule.forRoot(),
 		TypeOrmModule.forRoot(connectionOptions),
@@ -38,7 +23,6 @@ import { TestModule } from './test/test.module';
 			wildcard: true,
 			delimiter: '.',
 		}),
-		TestModule,
 	],
 	providers: [
 		{
